@@ -1,0 +1,41 @@
+<main-menu [searchField]="params.text" (onSearch)="onSearch($event.text)"></main-menu>
+<main class="container">
+  <div class="p-5 pt-0 rounded" *ngIf="userList.count > 0">
+    <div class="bg-white">
+      <div class="row pb-4">
+        <div class="col pt-2">
+          <span class="pl-3 link-dark text-decoration-none fs-5 fw-semibold">{{ userList.count | number }} users</span>
+        </div>
+        <div class="col text-end">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" id="sortDropdown" ngbDropdownToggle>Sort by:
+              <span>{{ getSortBySelected().display }}</span>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="sortDropdown">
+              <ng-container *ngFor="let opt of sortByOptions">
+                <button ngbDropdownItem (click)="onSort(opt.value)" *ngIf="!opt.selected">{{ opt.display }}</button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
+        <user-card *ngFor="let user of userList.items" [user]="user"></user-card>
+      </div>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+      <ngb-pagination [collectionSize]="userList.count" [(page)]="params.page" aria-label="Custom pagination" (pageChange)="onChangePage()"
+      [maxSize]="5" [pageSize]="params.perPage" [ellipses]="true" [rotate]="true">
+      <ng-template ngbPaginationPrevious> < Previous</ng-template>
+      <ng-template ngbPaginationNext>Next ></ng-template>
+    </ngb-pagination>
+    </div>
+  </div>
+  <h4 class="mt-5 d-flex justify-content-center" *ngIf="userList.count <= 0 && submitted && errors.length <= 0">User not found!</h4>
+  <div class="mt-5 alert alert-danger" role="alert" *ngIf="errors.length > 0">
+    Something went wrong:
+    <p *ngFor="let e of errors">
+      {{ e | json }}
+    </p>
+  </div>
+</main>

@@ -1,0 +1,38 @@
+.logo {
+  fill: white;
+}
+
+.notification-bell {
+  fill: white;
+  cursor: pointer;
+}
+
+.notification-status {
+  top: 3px;
+  left: 7px;
+  z-index: 2;
+  width: 9px;
+  height: 9px;
+  background-image: linear-gradient(#54a3ff, #006eed);
+  background-clip: padding-box;
+}
+
+::ng-deep .tooltip-help .tooltip-inner {
+  background-color: darkgreen;
+  font-size: 115%;
+}
+::ng-deep .tooltip-help.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: darkgreen;
+}
+::ng-deep .tooltip-help.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: darkgreen;
+}
+::ng-deep .tooltip-help.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: darkgreen;
+}
+::ng-deep .tooltip-help.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: darkgreen;
+}
+::ng-deep .tooltip {
+  margin-top: 10px !important;
+}

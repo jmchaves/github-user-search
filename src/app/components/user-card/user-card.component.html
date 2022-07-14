@@ -1,0 +1,13 @@
+<a [href]="user.profileUrl" target="_blank">
+  <div class="col">
+    <div class="card">
+      <img [src]="user.avatarUrl" class="card-img-top rounded-circle p-4">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ user.username }}
+          <span class="badge bg-info text-white float-end">{{ user.score }}</span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</a>
